@@ -34,38 +34,32 @@ python main_vdsr.py --cuda --gpus 0
 
 ### Evaluation
 ```
-usage: eval.py [-h] [--cuda] [--model MODEL] [--dataset DATASET]
-               [--scale SCALE] [--gpus GPUS]
-
-PyTorch VDSR Eval
+usage: evaluation.py [--image1 PATH] [--image2 PATH]
 
 optional arguments:
-  -h, --help         show this help message and exit
-  --cuda             use cuda?
-  --model MODEL      model path
-  --dataset DATASET  dataset name, Default: Set5
-  --gpus GPUS        gpu ids (default: 0)
+  --image1           Path to the first image
+  --image2           Path to the second image
 ```
 An example of training usage is shown as follows:
 ```
-python eval.py --cuda --dataset Set5
+python evaluation.py
 ```
 
 ### Demo
 ```
-usage: demo.py [-h] [--cuda] [--model MODEL] [--image IMAGE] [--scale SCALE] [--gpus GPUS]
+usage: test.py [--cuda] [--model MODEL] [--input_dir DIRECTORY] [--output_dir DIRECTORY][--scale SCALE] [--gpus GPUS]
                
 optional arguments:
-  -h, --help            Show this help message and exit
   --cuda                Use cuda
   --model               Model path. Default=model/model_epoch_50.pth
-  --image               Image name. Default=butterfly_GT
+  --input_dir           Input path. Default="datas/"
+  --output_dir          Output path. Default="result/"
   --scale               Scale factor, Default: 4
   --gpus GPUS           gpu ids (default: 0)
 ```
 An example of usage is shown as follows:
 ```
-python eval.py --model model/model_epoch_50.pth --dataset Set5 --cuda
+python test.py --model model/model_epoch_50.pth --cuda
 ```
 
 ### Prepare Training dataset
@@ -83,9 +77,7 @@ python eval.py --model model/model_epoch_50.pth --dataset Set5 --cuda
 | 4x      | 31.35      | 31.45 |
 
 ### Result
-From left to right are ground truth, bicubic and vdsr
 <p>
-  <img src='Set5/butterfly_GT.bmp' height='200' width='200'/>
-  <img src='result/input.bmp' height='200' width='200'/>
-  <img src='result/output.bmp' height='200' width='200'/>
+  <img src='datas/jaeseok.jpg' height='200' width='400'/>
+  <img src='result/jaeseok.jpg' height='200' width='400'/>
 </p>
